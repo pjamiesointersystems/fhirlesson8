@@ -1,0 +1,298 @@
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/metadata
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Patient?name=Jane
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+###
+
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Patient?name=Jane%20L
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Patient/2
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Patient?identifier=http://hl7.org/fhir/sid/us-ssn|999-63-9154
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Patient?gender=female
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Patient?address.country=US
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Patient?communication=en
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Patient?language=en
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Observation
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Observation?subject=Patient/2
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Observation?code=http://loinc.org|85354-9
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Observation?code=http://loinc.org|85354-9&date=ge2020-01-01
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Encounter?_include=Encounter.patient
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+// In the case of Encounter, the patient field is a reference to the Patient resource, but some FHIR implementations require the full reference path.
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Encounter?_include=Encounter:patient
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+//Some servers enforce this resource type modifier (:) for proper inclusion.
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Encounter?patient=Patient/2&_include=Encounter:participant
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Encounter?patient=Patient/2&_include=*
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Encounter?patient=Patient/2&_include=Encounter:patient&_include=Encounter:participant&_include=Encounter:service-provider&_include=Encounter:diagnosis
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Encounter?patient.name=Mann
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Observation?subject:Patient.birthdate=ge2000-01-01
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Patient?_has:Condition:patient:code=http://snomed.info/sct|195967001
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+//type 2 diabetes
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Condition?code=http://snomed.info/sct|195967001
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+###
+
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Practitioner?_has:Encounter:participant:status=in-progress
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+//practitioners linked to in progress encounters
+###
+
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Encounter?status=in-progress
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Encounter?class=AMB&_summary=count
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Patient?name=Smith&_summary=count
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Observation?code=http://loinc.org|85354-9&_summary=count
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+//blood pressure observations exist in the system
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Procedure?date=ge2000-01-01&date=le2005-01-01
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Patient?name:exact=Doe
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Patient?name=John%20A.%20Doe
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Patient?name:contains=Doe
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Patient?name:startswith=John%20A.
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/Patient?_id=2&_revinclude=Observation:subject
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+###
+GET http://127.0.0.1:8080/csp/healthshare/demo/fhir/r4/
+Authorization: Basic _System:ISCDEMO
+Accept: */*
+content-type: application/fhir+json
+Accept-Encoding: gzip, deflate, br
+Prefer: return=representation
+###
+
